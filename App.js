@@ -5,8 +5,13 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Text>Shashrika app eka</Text>
+      <Text>This is the first react APP</Text>
+        <View style={styles.container2}>
+        <Text>Shashrika app eka</Text>
+        <Text>Oya hariyata wada karanawada please</Text>
+      </View>
+    <StatusBar style="auto" />
     </View>
   );
 }
@@ -17,5 +22,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    
+  },
+  container2: {
+    backgroundColor: '#eee',
+    fontFamily:"Roboto-BoldItalic",
+    fontSize:40,
   },
 });
