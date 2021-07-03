@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {FlatList,View, Text, StyleSheet,SafeAreaView,Image} from "react-native";
+import {FlatList,StatusBar,View, Text, StyleSheet,SafeAreaView,Image} from "react-native";
 import Feather from "react-native-vector-icons/Feather";
 import fontAwsome from "react-native-vector-icons/FontAwesome";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -12,16 +12,30 @@ import colors from '../assets/colors/colors';
 Feather.loadFont();
 export default Home = ()=>{
 
-    const renderCategoryItem=(item)=>{
+    const renderCategoryItem=({ item })=>{
         return(
-            <View style={styles.categoriesListWrapper}>
-                <Text>hello</Text>
+            // <View style={styles.categoriesListWrapper}>
+            <View style={[styles.categoryItemWrapper, {
+                backgroundColor:item.selected ? colors.secondaryT50 : colors.background,
+                marginLeft: item.id==1 ? 20 : 0,
+            },
+            ]}>
+               <Image source={item.image} style={styles.categoryItemImage}/>
+               <Text style={styles.categoryItemTitle}>{item.title}</Text>
+               <View style={styles.categorySelectWrapper}>
+                   {/* <Feather
+                   name="shevron-right"
+                   size={8}
+                   style={styles.categorySelectIcon}
+                   /> */}
+               </View>
             </View>
         );
     };
 
     return(
         <View style={styles.container}>
+            <StatusBar backgroundColor={colors.primary}/>
             <SafeAreaView>
                 <View style={styles.headerWrapper}>
                     <Image source={require("../assets/images/profileimg_girl.jpg")} style={styles.profileImage}/>
@@ -47,14 +61,15 @@ export default Home = ()=>{
                 <Text style={styles.categoriesTitle}>Categories</Text>
                 <View style={styles.categoriesListWrapper}>
                 <FlatList
-                  data={categoriesData}
-                  renderItem={renderCategoryItem}
-                  keyExtractor={item => item.id}
-                  horizontal={true}
-                  />
+                data={categoriesData}
+                renderItem={renderCategoryItem}
+                keyExtractor={item => item.id}
+                horizontal={true}
+                /> 
                 
                 </View> 
             </View>
+
         </View>
         
     );
@@ -69,9 +84,9 @@ const styles=StyleSheet.create({
         flexDirection:"row",
         justifyContent:"space-between",
         paddingHorizontal:20,
-        paddingTop:35,
+        paddingTop:15,
         alignItems:"center",
-        backgroundColor:colors.primary,
+        backgroundColor:colors.secondary,
     },
     profileImage:{
         width:40,
@@ -92,7 +107,7 @@ const styles=StyleSheet.create({
         paddingLeft:10,
     },
     titleView:{
-        backgroundColor:colors.primary,
+        backgroundColor:colors.secondary,
         padding:10,
         paddingBottom:10,
         borderBottomLeftRadius:40,
@@ -123,8 +138,59 @@ const styles=StyleSheet.create({
         fontSize:20,
         paddingHorizontal:20,
     },
-    // categoriesListWrapper:{
 
-    // },
+    categoriesListWrapper:{
+        paddingTop:15,
+        paddingBottom:20,
+        // paddingLeft:20,
+    },
+
+    categoryItemWrapper:{
+       backgroundColor:colors.secondaryT50,
+       display:'flex',
+       marginRight:20,
+       borderRadius:20,
+       width:130,
+       padding:10,
+       alignItems:"center",
+       justifyContent:"center",
+
+    },
+
+    categoryItemImage:{
+        marginTop:25,
+        alignSelf:"center",
+        marginHorizontal:27,
+    },
+
+    categoryItemTitle:{
+        display:"flex",
+        textAlign:"center",
+        fontSize:16,
+        fontWeight:"600",
+        marginTop:10,
+    },
+
+    categorySelectWrapper:{
+        width:50,
+        height:50,
+        alignSelf:"center",
+        justifyContent:"center",
+        
+    },
+
+    categoryItemimage:{
+
+    },
+
+
+    itemsWrapper:{
+       paddingHorizontal:20,
+    },
+
+    itemsTitle:{
+        fontSize:16,
+        fontWeight:"bold",  
+    },
 
 })
