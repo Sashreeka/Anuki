@@ -14,12 +14,13 @@ export default Home = ()=>{
         <View style={styles.container}>
             <SafeAreaView>
                 <View style={styles.headerWrapper}>
-                    <Image source={require("../assets/images/profile_photo_2.png")} style={styles.profileImage}/>
-                    {/* icons */}
+                    <Image source={require("../assets/images/profileimg_girl.jpg")} style={styles.profileImage}/>
+                    <Feather name="menu" size={24} color={colors.textDark}></Feather>
                 </View>
-                <Feather name="menu" size={24} color={colors.textDark}></Feather>
+                
             </SafeAreaView>
-
+            {/* titles */}
+            
         </View>
         
     );
@@ -27,5 +28,23 @@ export default Home = ()=>{
 
 
 const styles=StyleSheet.create({
+    container:{
+        flex:1,
+    },
+    headerWrapper:{
+        flexDirection:"row",
+        justifyContent:"space-between",
+        paddingHorizontal:20,
+        paddingTop:35,
+        paddingBottom:10,
+        alignItems:"center",
+        backgroundColor:colors.primary,
+    },
+    profileImage:{
+        width:40,
+        height:40,
+        borderRadius:40,
+        
+    },
 
 })
