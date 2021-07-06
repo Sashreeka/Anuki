@@ -70,6 +70,38 @@ export default Home = ()=>{
                 </View> 
             </View>
 
+            {/* items list */}
+            <View style={styles.itemsWrapper}>
+                <Text style={styles.itemsTitle}>Shop Items</Text>
+                {itemsData.map((item)=>(
+                     <View style={[styles.itemsCardwrapper,
+                     {
+                         marginTop:item.id==1 ? 10 : 20,
+                     }
+                     ]}>
+                         <View style={styles.itemCardWrapOuter}>
+                            <View>
+                                <View style={styles.itemWrapperMain}>
+                                    <Text style={styles.itemTitleMain}>{item.title}</Text>  
+                                </View>
+                                <View style={styles.itemDescriptionWrapper}>
+                                    <Text style={styles.itemDescription}>{item.description}</Text>
+                                    <Text style={styles.itemUnitWeight}>{item.UnitWeight}</Text>
+                                </View>
+                                <View style={styles.itemADDbutton}>
+                                    <Text>ADD<Feather name="plus" size={15} color='#000'/>
+                                    </Text>
+                                </View>
+                            </View>
+                            <View>
+                                <Image source={item.image}/>
+                            </View>
+                         </View>
+                         
+                 </View>
+                )   
+                )}
+            </View>
         </View>
         
     );
@@ -169,11 +201,11 @@ const styles=StyleSheet.create({
         fontSize:16,
         fontWeight:"600",
         marginTop:10,
+        textTransform:'uppercase',
     },
 
     categorySelectWrapper:{
-        width:50,
-        height:50,
+        height:30,
         alignSelf:"center",
         justifyContent:"center",
         
@@ -189,8 +221,60 @@ const styles=StyleSheet.create({
     },
 
     itemsTitle:{
-        fontSize:16,
+        fontSize:20,
         fontWeight:"bold",  
     },
+
+    itemsCardwrapper:{
+        backgroundColor:colors.background,
+        borderRadius:15,
+        paddingTop:20,
+        paddingLeft:20,
+        flexDirection:"row",
+
+    },
+
+    itemWrapperMain:{
+        flexDirection:"row",
+        alignItems:"center",
+
+    },
+
+    itemTitleMain:{
+        fontSize:20 ,
+        color: colors.textlight,
+        fontWeight:'700',
+    },
+    itemDescription:{
+
+    },
+
+    itemDescriptionWrapper:{
+       marginTop:10,
+
+    },
+
+    itemDescription:{
+        fontSize:14,
+        color:colors.textDark,
+    },
+
+    itemUnitWeight:{
+        fontSize:12,
+        color:colors.textlight,
+        marginTop:5,
+    },
+    itemADDbutton:{
+        backgroundColor:colors.primary,
+        width:150,
+        alignItems:"center",
+        justifyContent:"center",
+        padding:10,
+        borderRadius:15,
+    },
+
+    itemCardWrapOuter:{
+    
+    }
 
 })
